@@ -1,3 +1,8 @@
-import express from 'express'
+import * as express from "express"
+
 export const app = express()
-app.use('/api')
+
+app.use("/",(req,res)=>{
+    res.send("mpruy nation")
+})
+

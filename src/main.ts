@@ -1,4 +1,4 @@
-import {app} from './application/web.js'
+import {app} from "./application/web"
 
 app.listen('3000',()=>{
     console.log("Server is running on port 3000")
