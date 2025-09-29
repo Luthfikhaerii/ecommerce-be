@@ -1,11 +1,10 @@
 import express,{Request,Response} from "express"
+import { UserController } from "../controllers/user-controller"
 const userRouter = express.Router()
 
-userRouter.get('/',(req:Request,res:Response)=>{
-    res.send("awok wik")
-})
+userRouter.get('/',UserController.get)
 userRouter.post('/',(req:Request,res:Response)=>{
-    
+
 })
 
 export default userRouter
