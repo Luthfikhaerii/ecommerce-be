@@ -1,8 +1,6 @@
-import * as express from "express"
-
+import express from "express"
+import router from "../routes/index"
 export const app = express()
-
-app.use("/",(req,res)=>{
-    res.send("mpruy nation")
-})
+app.use(express.json())
+app.use("/api",router)
 
