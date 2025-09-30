@@ -1,5 +1,5 @@
 import { prisma } from "../application/database";
-import { CreateUserRequest } from "../model/user-model";
+import { CreateUserRequest } from "../dto/user-dto";
 
 export class UserService{
     static async getUsers(){
