@@ -8,5 +8,13 @@ export type UserResponse = {
 export type CreateUserRequest= {
     username:string
     email:string
+    role:string
     password:string
+}
+
+export type UpdateUserRequest = {
+    username?:string
+    email?:string
+    role?:string
+    password?:string
 }

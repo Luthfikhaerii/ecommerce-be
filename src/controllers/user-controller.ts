@@ -27,7 +27,7 @@ export class UserController {
     static async register(req: Request, res: Response, next: NextFunction) {
         try {
             const request: CreateUserRequest = req.body as CreateUserRequest
-            const data = await UserService.create(request)
+            const data = await UserService.createUser(request)
             res.status(200).json({
                 success: false,
                 data
