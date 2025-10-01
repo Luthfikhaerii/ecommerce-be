@@ -20,16 +20,3 @@ export const prisma = new PrismaClient({
         // }
     ]
 });
-
-prisma.$on("error",(e: any)=>{
-    logger.error(e)
-})
-prisma.$on("warn",(e: any)=>{
-    logger.warn(e)
-})
-// prisma.$on("query",(e: any)=>{
-//     logger.info(e)
-// })
-prisma.$on("info",(e: any)=>{
-    logger.info(e)
-})

@@ -6,7 +6,6 @@ export class UserService {
         const user = await prisma.user.findMany()
         return user;
     }
-
     static async getUserById(id: number) {
         const user = await prisma.user.findUnique({
             where: {
@@ -15,7 +14,6 @@ export class UserService {
         })
         return user
     }
-
     static async createUser(body: CreateUserRequest) {
         try {
             const user = await prisma.user.create({
