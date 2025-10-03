@@ -19,7 +19,7 @@ describe("User API", () => {
             await prisma.user.deleteMany()
         })
 
-        it("GET /api/user", async () => {
+        it("should return user", async () => {
             const user =await request(app).get("/api/user")
 
             expect(user.statusCode).toBe(200)
