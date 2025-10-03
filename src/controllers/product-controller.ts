@@ -1,6 +1,6 @@
 import { NextFunction,Request,Response } from "express";
 import { ProductService } from "../service/product-service";
-import { CreateProductRequest } from "../dto/product-dto";
+import { CreateProductRequest } from "../models/product-model";
 
 export class ProductController {
     static async get(req:Request,res:Response,next:NextFunction){

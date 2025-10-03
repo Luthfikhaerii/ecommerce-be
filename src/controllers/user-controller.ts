@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express"
 import { UserService } from "../service/user-service"
-import type { CreateUserRequest } from "../dto/user-dto"
+import type { CreateUserRequest } from "../models/user-models"
 
 export class UserController {
 

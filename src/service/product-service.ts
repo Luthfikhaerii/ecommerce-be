@@ -1,5 +1,5 @@
 import { prisma } from "../application/database";
-import { CreateProductRequest } from "../dto/product-dto";
+import { CreateProductRequest } from "../models/product-model";
 
 export class ProductService{
     static async getProduct(){

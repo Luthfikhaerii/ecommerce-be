@@ -1,10 +1,15 @@
-import { Invoice as InvoiceClient } from "xendit-node"
-import { Invoice, CreateInvoiceRequest } from "xendit-node/invoice/models"
+import { Invoice as InvoiceClient,Balance as BalanceClient } from "xendit-node"
+import { Invoice, CreateInvoiceRequest} from "xendit-node/invoice/models"
+import { Balance as BalanceModel } from "xendit-node/balance_and_transaction/models"
 import { Router } from "express"
 import { xenditClient } from "../application/xendit"
+const {Balance} = xenditClient
 
 const xenditInvoice = new InvoiceClient({
     secretKey: "xnd_development_ChjBUPtJa47D5ZNNWmtKCKWc6OrH83zkHwZuHwNJ2zMRsqAsZJAhcKCGDOljO"
+})
+const xenditBalance = new BalanceClient({
+    secretKey:"xnd_development_ChjBUPtJa47D5ZNNWmtKCKWc6OrH83zkHwZuHwNJ2zMRsqAsZJAhcKCGDOljO"
 })
 
 
@@ -45,13 +50,15 @@ paymentRouter.get("/transaction", async (req, res) => {
     })
     res.send(response)
 })
-paymentRouter.get("/get_transaction", async (req, res) => {
+paymentRouter.post("/get_transaction", async (req, res) => {
 
     const response: Invoice = await xenditInvoice.getInvoiceById({
         invoiceId: "68de99230119a81076d0a578",
     })
-    console.log(res)
-    console.log(req)
-    res.redirect("/mpruy")
+    res.send(req.body)
+})
+paymentRouter.get("/balance",async (req,res)=>{
+    const response:BalanceModel = await xenditBalance.getBalance()
+    res.send(response)
 })
 

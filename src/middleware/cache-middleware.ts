@@ -4,7 +4,6 @@ import { CacheService } from "../service/cache-service";
 export function cacheMiddleware(prefix:string,ttl:number){
     return async (req:Request,res:Response,next:NextFunction)=>{
          const key = `${prefix}:${req.originalUrl}`
-         console.log(key)
         try{
             const cached = await CacheService.get(key)
             if(cached){
