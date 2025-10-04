@@ -15,23 +15,7 @@ const xenditBalance = new BalanceClient({
 
 export const paymentRouter = Router()
 
-paymentRouter.get("/transaction", async (req, res) => {
-
-    const data: CreateInvoiceRequest = {
-        "amount": 10000,
-        "invoiceDuration": 172800,
-        "externalId": "test1234",
-        "description": "Test Invoice",
-        "currency": "IDR",
-        "reminderTime": 1
-    }
-
-    const response: Invoice = await xenditInvoice.createInvoice({
-        data
-    })
-    res.send(response)
-})
-
+//payment
 paymentRouter.get("/transaction", async (req, res) => {
 
     const data: CreateInvoiceRequest = {
@@ -50,6 +34,8 @@ paymentRouter.get("/transaction", async (req, res) => {
     })
     res.send(response)
 })
+
+//after payment success
 paymentRouter.post("/get_transaction", async (req, res) => {
 
     const response: Invoice = await xenditInvoice.getInvoiceById({
@@ -57,6 +43,8 @@ paymentRouter.post("/get_transaction", async (req, res) => {
     })
     res.send(req.body)
 })
+
+//get saldo
 paymentRouter.get("/balance",async (req,res)=>{
     const response:BalanceModel = await xenditBalance.getBalance()
     res.send(response)

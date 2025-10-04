@@ -25,7 +25,7 @@ describe("UserService", () => {
     // prisma.user.create sekarang adalah jest.fn()
     (prisma.user.create as jest.Mock<any>).mockResolvedValue(mockUser);
 
-    const user = await UserService.createUser(mockUser);
+    const user = await UserService.register(mockUser);
 
     expect(user).toEqual(mockUser);
     expect(prisma.user.create).toHaveBeenCalledWith({ data: mockUser });

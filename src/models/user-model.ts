@@ -18,3 +18,8 @@ export type UpdateUserRequest = {
     role?:string
     password?:string
 }
+
+export type LoginUserRequest = {
+    email:string
+    password:string
+}
