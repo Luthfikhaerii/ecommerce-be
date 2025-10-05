@@ -16,10 +16,15 @@ datasource db {
 model User {
   id       Int     @id @default(autoincrement())
   username String
-  role     String 
+  role     String
   email    String  @unique
   password String
   orders   Order[]
+}
+
+model Category {
+  id       Int    @id @default(autoincrement())
+  category String
 }
 
 model Product {
@@ -34,23 +39,35 @@ model Product {
   content              String[]
   product_description  String
   delivery_description String
-  orders               Order[]
+
+  item_orders Item_Order[]
 }
 
 model Order {
-  createdAt    DateTime @default(now())
-  id           Int      @id @default(autoincrement())
-  status       String   
-  id_user      Int?
+  createdAt      DateTime     @default(now())
+  id             Int          @id @default(autoincrement())
+  status         String
+  id_user        Int?
+  username       String
+  address        String
+  pos_code       Int
+  total_price    Int
+  total_quantity Int
+  shipping_cost  Int
+  item_orders    Item_Order[]
+
+  user User? @relation(fields: [id_user], references: [id], onDelete: SetNull)
+}
+
+model Item_Order {
+  id           Int    @id @default(autoincrement())
   id_product   Int?
-  username     String
-  address      String
-  pos_code     Int
+  id_order     Int
   product_name String
   price        Int
   quantity     Int
   size         String
 
-  user    User?    @relation(fields: [id_user], references: [id], onDelete: SetNull)
   product Product? @relation(fields: [id_product], references: [id], onDelete: SetNull)
+  order   Order    @relation(fields: [id_order], references: [id], onDelete: Cascade)
 }
