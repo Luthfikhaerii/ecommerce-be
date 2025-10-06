@@ -1,6 +1,6 @@
 import { prisma } from "../application/database";
 
-export class Category {
+export class CategoryService {
     static async getCategory() {
         const data = await prisma.category.findMany()
         return data
